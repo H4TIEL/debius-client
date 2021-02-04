@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" minHeight="800.0" minWidth="1600.0" styleClass="main" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ml.debius.systems.controller.SystemController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/system.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER_LEFT" spacing="20.0">
+         <children>
+            <Label fx:id="title" styleClass="title-label" text="Host System" />
+            <Label styleClass="subtitle-label" text="Check your system requirements">
+               <font>
+                  <Font name="Ubuntu" size="14.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Pane prefHeight="64.0" prefWidth="64.0">
+                     <children>
+                        <Circle layoutX="32.0" layoutY="32.0" radius="48.0" strokeType="INSIDE" styleClass="docker" />
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/docker.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="45.0" layoutY="10.0" prefHeight="64.0" prefWidth="64.0">
+                     <children>
+                        <Circle layoutX="32.0" layoutY="32.0" radius="48.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="gpu" />
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/nvidia.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <ProgressBar fx:id="scanProgress" prefWidth="250.0" progress="0.0" visible="false">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ProgressBar>
+                  <VBox fx:id="resultsVBox" alignment="CENTER" spacing="20.0">
+                     <children>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" minHeight="30.0" styleClass="docker">
+                           <children>
+                              <Text fx:id="dockerText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="docker" text="docker" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" minHeight="30.0" prefWrapLength="500.0" styleClass="gpu">
+                           <children>
+                              <Text fx:id="gpuText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gpu" text="gpu" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="scanButton" mnemonicParsing="false" onAction="#handleScan" styleClass="next-button" text="Scan System" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNext" styleClass="next-button" text="Next step: Project" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

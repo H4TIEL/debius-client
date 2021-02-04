@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" minHeight="800.0" minWidth="1600.0" spacing="20.0" styleClass="main" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ml.debius.systems.controller.AuthController">
+   <children>
+      <ImageView fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/group_selfie.png" />
+         </image></ImageView>
+      <VBox alignment="CENTER_LEFT" spacing="20.0">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="title" text="Debius">
+                     <font>
+                        <Font name="Ubuntu" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="App login">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Sign up on the website to get your app key">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER_RIGHT" spacing="50.0">
+               <children>
+                  <TextField fx:id="keyField" alignment="CENTER" promptText="App key">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#handleLogin" text="Login with GitHub" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

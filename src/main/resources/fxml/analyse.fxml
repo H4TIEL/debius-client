@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" minHeight="-Infinity" styleClass="main" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ml.debius.systems.controller.AnalyseController">
+   <children>
+      <VBox alignment="CENTER">
+         <children>
+            <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/team.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox fx:id="analyseVBox" alignment="CENTER_LEFT" spacing="10.0">
+         <children>
+            <Label fx:id="title" text="Analyse">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Select generated dataset to analyse">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+               <children>
+                  <ChoiceBox fx:id="datasetChoiceBox" minWidth="200.0" />
+                  <Button fx:id="analyseButton" mnemonicParsing="false" onAction="#handleAnalyse" styleClass="next-button" text="Analyse" />
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <ProgressBar fx:id="analyseProgress" prefWidth="250.0" progress="0.32">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ProgressBar>
+                        <Text fx:id="resultsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="results-text" text="results" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="plotButton" mnemonicParsing="false" onAction="#handlePlot" styleClass="next-button" text="Plot" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <VBox fx:id="genderVBox2" alignment="TOP_CENTER">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#bdbdbd" />
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/gender.png" />
+                           </image>
+                        </ImageView>
+                        <BarChart fx:id="genderBarChart" horizontalGridLinesVisible="false" legendVisible="false" title="Gender" verticalGridLinesVisible="false">
+                           <xAxis>
+                              <CategoryAxis animated="false" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="genderVBox1" alignment="TOP_CENTER">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#bdbdbd" />
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons/age.png" />
+                           </image>
+                        </ImageView>
+                        <BarChart fx:id="ageBarChart" animated="false" horizontalGridLinesVisible="false" legendVisible="false" title="Age" verticalGridLinesVisible="false">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNext" styleClass="next-button" text="Next step: Model Analysis">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

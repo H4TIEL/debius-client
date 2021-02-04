@@ -1,0 +1,32 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'org.openjfx.javafxplugin' version '0.0.8'
+	id 'java'
+}
+
+group = 'ml.debius'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+javafx {
+	version = "11"
+	modules = [ 'javafx.controls', 'javafx.fxml']
+}
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile group: 'com.konghq', name: 'unirest-java', version: '3.11.06'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

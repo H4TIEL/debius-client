@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1600.0" spacing="20.0" styleClass="main" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ml.debius.systems.controller.DatasetController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/data.png" />
+         </image>
+      </ImageView>
+      <VBox fx:id="datasetVBox" alignment="CENTER_LEFT" spacing="20.0">
+         <children>
+            <Label fx:id="title" text="Dataset">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label styleClass="subtitle-label" text="Name the dataset and choose directory for synthetic images">
+               <font>
+                  <Font name="Ubuntu" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Format: /mount/images">
+               <font>
+                  <Font name="Ubuntu" size="14.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <Text fx:id="resultsText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="results-text" text="results" />
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label styleClass="subtitle-label" text="Dataset name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="datasetField" alignment="CENTER" onAction="#handleDatasetName" promptText="Dataset Name">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="directoryButton" mnemonicParsing="false" onAction="#handleDirectory" styleClass="next-button" text="Choose Output Directory">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNext" styleClass="next-button" text="Next: Generator">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
