@@ -19,7 +19,7 @@ import java.io.IOException;
     @Component
 public class StageInitializerListener implements ApplicationListener<StageReadyEvent> {
 
-    @Value("classpath:fxml/model.fxml")
+    @Value("classpath:fxml/auth.fxml")
     private Resource fxml;
 
     @Value("${spring.application.ui.title}")

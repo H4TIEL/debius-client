@@ -19,7 +19,7 @@ public class SystemService {
             if (line.contains("GeForce")) {
                 return line;
             } else {
-                return "Nvidia GPU required";
+                return "NVIDIA GPU required";
             }
         } catch (IOException e) {
             e.printStackTrace();
