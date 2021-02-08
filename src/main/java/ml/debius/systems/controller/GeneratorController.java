@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import javafx.stage.Stage;
@@ -21,12 +22,13 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 @Controller
 public class GeneratorController implements Initializable , ApplicationListener<GeneratorEvent> {
 
-    private static final int COUNT = 3;
+
     final GeneratorService generatorService;
 
     final DatasetService datasetService;
@@ -38,6 +40,9 @@ public class GeneratorController implements Initializable , ApplicationListener<
 
     @FXML
     Label title;
+
+    @FXML
+    TextField generateCountField;
 
     @FXML
     ProgressBar generateProgress;
@@ -67,13 +72,29 @@ public class GeneratorController implements Initializable , ApplicationListener<
 
     @FXML
     public void handleGenerate() {
-        int start = (int)(Math.random() * (7000 - 5000 + 1) + 5000);
-        DataHolder.getInstance().getData().getDataset().setGeneratedCount(start);
-        String seeds = String.format("%s-%s", start, start + COUNT);
+        Random rand = new Random(); //instance of random class
+        int upperbound = 50000;
+        int start = rand.nextInt (upperbound);
+        DataHolder.getInstance().getData().getDataset().setStartSeed(start);
+        Integer end = DataHolder.getInstance().getData().getDataset().getGeneratedCount();
+        String seeds = String.format("%s-%s", start, start + end);
         String response = generatorService.generateImages(seeds, "0.7");
         resultsText.setVisible(true);
         resultsText.setText(response);
         generateProgress.setVisible(true);
+    }
+
+    @FXML
+    public void handleGenerateCount(){
+        try {
+            Integer count = Integer.parseInt(generateCountField.getText());
+            DataHolder.getInstance().getData().getDataset().setGeneratedCount(count);
+            generateButton.setVisible(true);
+        } catch (NumberFormatException e){
+            resultsText.setVisible(true);
+            resultsText.setText("Invalid count");
+        }
+
     }
 
     @Override
@@ -81,12 +102,15 @@ public class GeneratorController implements Initializable , ApplicationListener<
         resultsText.setVisible(false);
         generateProgress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         generateProgress.setVisible(false);
+        generateButton.setVisible(false);
+        nextButton.setVisible(false);
     }
 
     @Override
     public void onApplicationEvent(GeneratorEvent event) {
+        Integer start = DataHolder.getInstance().getData().getDataset().getStartSeed();
         Integer count = DataHolder.getInstance().getData().getDataset().getGeneratedCount();
-        generatorService.fetchGeneratedImages(count, COUNT);
+        generatorService.fetchGeneratedImages(start, count);
         resultsText.setText(event.getResponse());
         generateProgress.setVisible(false);
         generateButton.setVisible(false);

@@ -32,18 +32,22 @@ public class GeneratorService {
     }
 
     public String generateImages(String seeds, String truncation_psi) {
-        generatorEventListenerServer();
-        String response = Unirest.post(GENERATOR_URL)
-                .field("seeds", seeds)
-                .field("truncation_psi", truncation_psi)
-                .asString()
-                .getBody();
-        return String.format("%s", response);
+        try {
+            generatorEventListenerServer();
+            String response = Unirest.post(GENERATOR_URL)
+                    .field("seeds", seeds)
+                    .field("truncation_psi", truncation_psi)
+                    .asString()
+                    .getBody();
+            return String.format("%s", response);
+        } catch (Exception e){
+            return "Generator not running";
+        }
     }
 
-    public void fetchGeneratedImages(int start, int count){
+    public void fetchGeneratedImages(int start, int end){
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        for(int seed = start; seed <= start + count; seed++) {
+        for(int seed = start; seed <= start + end; seed++) {
            executor.submit(fetchImage(seed));
         }
     }

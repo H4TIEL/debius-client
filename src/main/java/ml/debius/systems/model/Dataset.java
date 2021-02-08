@@ -21,6 +21,8 @@ public class Dataset {
 
     private Integer generatedCount;
 
+    private Integer startSeed;
+
     @ManyToOne
     private Project project;
 
@@ -83,5 +85,13 @@ public class Dataset {
 
     public void setModel(Model model) {
         this.model = model;
+    }
+
+    public Integer getStartSeed() {
+        return startSeed;
+    }
+
+    public void setStartSeed(Integer startSeed) {
+        this.startSeed = startSeed;
     }
 }
