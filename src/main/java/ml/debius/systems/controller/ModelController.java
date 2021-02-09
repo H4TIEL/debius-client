@@ -114,11 +114,10 @@ public class ModelController implements Initializable {
 
     @FXML
     public void handleAnalyse() {
-        Dataset dataset = datasetService.getDatasetByName("Test");
-        //Dataset dataset = datasetService.getDatasetByName(DataHolder.getInstance().getData().getDataset().getName());
+        Dataset dataset = datasetService.getDatasetByName(DataHolder.getInstance().getData().getDataset().getName());
         Model model = modelService.analyseModel(resultsText.getText());
         model.setDataset(dataset);
-        //DataHolder.getInstance().getData().setModel(model);
+        DataHolder.getInstance().getData().setModel(model);
         modelService.saveModel(model);
         clearCharts();
         updateCharts(model);

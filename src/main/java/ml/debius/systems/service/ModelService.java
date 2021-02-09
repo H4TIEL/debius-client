@@ -23,8 +23,25 @@ public class ModelService {
         this.imageService = imageService;
     }
 
-    public Model analyseModel(String inputFile) {
+    private Model initializeModel() {
         Model model = new Model();
+        model.setMaleDemographicError(0);
+        model.setFemaleDemographicError(0);
+        model.setAge0_2Error(0);
+        model.setAge3_9Error(0);
+        model.setAge10_19Error(0);
+        model.setAge20_29Error(0);
+        model.setAge30_39Error(0);
+        model.setAge40_49Error(0);
+        model.setAge50_59Error(0);
+        model.setAge60_69Error(0);
+        model.setAge70_Error(0);
+        return model;
+    }
+
+
+    public Model analyseModel(String inputFile) {
+        Model model = initializeModel();
         try {
             BufferedReader csvReader = new BufferedReader(new FileReader(inputFile));
             String row;

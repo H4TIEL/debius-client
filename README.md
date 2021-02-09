@@ -15,13 +15,16 @@ Debius is currently extended with the following plugins.
 | Docker | 
 | Java | 
 
+
+## Inside debius-client
+
 #### Generator
 
-docker run --gpus all --network host -it -p 5000:5000 h4tiel/debius-generator
+`sudo docker run --gpus all --network host -it -p 5000:5000 h4tiel/debius-generator`
 
 #### Classifier
 
-docker run --gpus all --network host -it -p 5000:5000 -v "$(pwd)"/mount:/mount h4tiel/debius-classifier
+`sudo docker run --gpus all --network host -it -p 5000:5000 -v "$(pwd)"/mount:/mount h4tiel/debius-classifier`
 
 
 ### Debug client app
