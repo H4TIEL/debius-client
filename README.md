@@ -1,12 +1,12 @@
+![Logo](https://github.com/H4TIEL/debius-client/blob/main/src/main/resources/assets/icons/github-icon.png?raw=true)
+
 # Debius Client
 Bias detection and mitigation tool for face image datasets.
 
-![Logo](https://github.com/H4TIEL/debius-client/tree/main/src/main/resources/assets/icons/logo.png)
-
+[![Actions Status](https://github.com/H4TIEL/debius-client/workflows/Java-CI/badge.svg)](https://github.com/H4TIEL/debius-client/actions)
 
 > Mitigate bias a face analysis model using the debius-client.
 > Use the build classifier and generator container images.
-
 
 ### Requirements
 
