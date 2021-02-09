@@ -72,11 +72,11 @@ public class GeneratorController implements Initializable , ApplicationListener<
 
     @FXML
     public void handleGenerate() {
-        Random rand = new Random(); //instance of random class
         int upperbound = 50000;
-        int start = rand.nextInt (upperbound);
+        int start = new Random().nextInt (upperbound);
         DataHolder.getInstance().getData().getDataset().setStartSeed(start);
         Integer end = DataHolder.getInstance().getData().getDataset().getGeneratedCount();
+        datasetService.saveDataset(DataHolder.getInstance().getData().getDataset());
         String seeds = String.format("%s-%s", start, start + end);
         String response = generatorService.generateImages(seeds, "0.7");
         resultsText.setVisible(true);
